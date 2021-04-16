@@ -4,6 +4,19 @@
 	box-sizing: border-box;
 }
 
+:root {
+	--primary: #efb6b2;
+	--secondary: #4e4e4e;
+	--error: #ff4a4a;
+	--primaryDark: #efb6b2;
+	--secondaryDark: #4e4e4e;
+}
+
+@import "./_header.scss";
+
 .App {
 	transition: all 1s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
