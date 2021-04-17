@@ -1,7 +1,14 @@
 import React from "react";
 import Picon from "../icons/P.png";
+import google from "../icons/google.png";
+//& firebase
+import firebase from "firebase";
+import { auth } from "../firebase/config";
 
-const Header = () => {
+const Header = ({ user }) => {
+	const onClickHandler = () => {
+		auth.signOut();
+	};
 	return (
 		<div className="Header">
 			<div className="brand">
@@ -19,6 +26,11 @@ const Header = () => {
 				</select>
 				<button>🔍</button>
 			</div>
+			{user && (
+				<button onClick={onClickHandler} className="signout">
+					Sign out from <img src={google} alt="Google" />
+				</button>
+			)}
 		</div>
 	);
 };

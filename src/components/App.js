@@ -2,6 +2,7 @@ import React from "react";
 //& components
 import "../styles/app.scss";
 import UploadForm from "./UploadForm";
+import Login from "./Login";
 import Header from "./Header";
 //& firebase
 import firebase from "firebase";
@@ -12,8 +13,8 @@ const App = () => {
 	const [user] = useAuthState(auth);
 	return (
 		<div className="App">
-			<Header />
-			<UploadForm />
+			<Header user={user} />
+			{user ? <UploadForm /> : <Login />}
 		</div>
 	);
 };

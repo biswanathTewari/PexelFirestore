@@ -1,0 +1,23 @@
+.login {
+	margin: 1rem 0rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	button {
+		margin-top: 1rem;
+		background: none;
+		padding: 0.5rem 1rem;
+		border-radius: 1rem;
+		border: 2px solid var(--primary);
+
+		img {
+			max-height: 4vh;
+		}
+	}
+	button:hover {
+		background: var(--primary);
+		color: white;
+	}
+}
