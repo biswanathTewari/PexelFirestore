@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import uploadIcon from "../icons/upload.png";
+import Progress from "./Progress";
 
-const UploadForm = () => {
+const UploadForm = ({ user }) => {
 	const [file, setFile] = useState(null);
 	const [error, setError] = useState(null);
 	const [category, setCategory] = useState("aesthetic");
@@ -34,7 +36,7 @@ const UploadForm = () => {
 			<form onSubmit={onSubmitHandler}>
 				<label>
 					<input onChange={onChangeHandler} type="file" />
-					<span>upload file</span>
+					<span>select a file</span>
 				</label>
 				<select
 					className="form-select"
@@ -51,7 +53,14 @@ const UploadForm = () => {
 				<div className="output-display">
 					{file && <div>{file.name}</div>}
 					{error && <div className="errorMsg">{error}</div>}
-					{upload && <div className="">progressing</div>}
+					{upload && (
+						<Progress
+							file={file}
+							user={user}
+							setFile={setFile}
+							setUpload={setUpload}
+						/>
+					)}
 				</div>
 			</form>
 		</div>

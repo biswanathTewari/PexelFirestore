@@ -14,7 +14,7 @@ const App = () => {
 	return (
 		<div className="App">
 			<Header user={user} />
-			{user ? <UploadForm /> : <Login />}
+			{user ? <UploadForm user={user} /> : <Login />}
 		</div>
 	);
 };

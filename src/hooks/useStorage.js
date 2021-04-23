@@ -29,3 +29,5 @@ const useStorage = ({ file }) => {
 
 	return { progress, error, url };
 };
+
+export default useStorage;
