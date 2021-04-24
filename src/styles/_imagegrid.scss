@@ -12,3 +12,13 @@
 	grid-row-end: span 2;
 	cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+	.img-grid {
+		width: 90%;
+
+		img {
+			width: 100%;
+		}
+	}
+}
