@@ -5,24 +5,20 @@ const useFirestore = (collection, queryValue) => {
 	const [docs, setDocs] = useState([]);
 
 	useEffect(() => {
-		console.log(queryValue);
-
 		//* unsub() is a function returned by RHS for stoping the live fetch
 		if (queryValue === "All" || queryValue === "")
-			db.collection(collection)
-				.get()
-				.then((snap) => {
-					const documents = snap.docs.map((doc) => {
-						return {
-							url: doc.data().url,
-							createdAt: doc.data().createdAt,
-							id: doc.id,
-							userName: doc.data().userName,
-							category: doc.data().category,
-						};
-					});
-					setDocs(documents);
+			db.collection(collection).onSnapshot((snap) => {
+				const documents = snap.docs.map((doc) => {
+					return {
+						url: doc.data().url,
+						createdAt: doc.data().createdAt,
+						id: doc.id,
+						userName: doc.data().userName,
+						category: doc.data().category,
+					};
 				});
+				setDocs(documents);
+			});
 		else
 			db.collection(collection)
 				.where("category", "==", queryValue)
@@ -44,7 +40,7 @@ const useFirestore = (collection, queryValue) => {
 		return () => {
 			//unsub();
 		};
-	}, [queryValue, collection]);
+	}, [collection, queryValue]);
 
 	return { docs };
 };
