@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
-const ImageCard = ({ urlSrc }) => {
+const ImageCard = ({ doc, selectedImage, setSelectedImage }) => {
 	const [spans, setSpans] = useState(0);
 
 	const imageRef = useRef();
@@ -20,7 +21,16 @@ const ImageCard = ({ urlSrc }) => {
 
 	return (
 		<div style={{ gridRowEnd: `span ${spans}` }}>
-			<img ref={imageRef} src={urlSrc} alt="images" />
+			<motion.img
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				ref={imageRef}
+				onClick={() => {
+					setSelectedImage(doc);
+				}}
+				src={doc.url}
+				alt="images"
+			/>
 		</div>
 	);
 };

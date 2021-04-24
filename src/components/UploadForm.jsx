@@ -24,6 +24,7 @@ const UploadForm = ({ user }) => {
 	return (
 		<div className="UploadForm">
 			<form>
+				<h4>Upload an image</h4>
 				{!category && (
 					<select
 						className="form-select"

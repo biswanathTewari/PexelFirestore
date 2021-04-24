@@ -14,9 +14,7 @@ const Header = ({ user, queryValue, setQueryValue }) => {
 			<div className="brand">
 				<img src={Picon} alt="icon" />
 			</div>
-			<h1>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero
-			</h1>
+			<h1>The best free stock photos shared by talented creators.</h1>
 			<div className="select-category">
 				<select
 					className="form-select"
@@ -24,7 +22,7 @@ const Header = ({ user, queryValue, setQueryValue }) => {
 					value={queryValue}
 					onChange={(e) => setQueryValue(e.target.value)}
 				>
-					<option defaultValue="">Choose a category</option>
+					<option defaultValue="">Choose a category of images</option>
 					<option value="aesthetic">Aesthetic</option>
 					<option value="food">Food</option>
 					<option value="cars">Cars</option>
@@ -34,7 +32,8 @@ const Header = ({ user, queryValue, setQueryValue }) => {
 			</div>
 			{user && (
 				<button onClick={onClickHandler} className="signout">
-					Sign out from <img src={google} alt="Google" />
+					Sign out
+					<img src={google} alt="Google" />
 				</button>
 			)}
 		</div>

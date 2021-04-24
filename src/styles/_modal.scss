@@ -1,0 +1,69 @@
+.modals {
+	background-color: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+}
+
+.modals img {
+	display: block;
+	max-width: 60%;
+	max-height: 80%;
+	margin: 60px auto;
+	box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
+	border: 3px solid white;
+}
+
+.display-section {
+	background-color: rgba(5, 72, 139, 0.74);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 2rem;
+	color: whitesmoke;
+
+	span {
+		color: rgb(185, 179, 179);
+	}
+
+	textarea {
+		display: none;
+	}
+
+	.copier {
+		margin-top: 4rem;
+		text-align: center;
+		text-decoration: underline;
+		cursor: pointer;
+
+		.copy:hover {
+			font-size: larger;
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.modals {
+		flex-direction: column;
+
+		img {
+			height: 50vh;
+		}
+
+		.display-section {
+			h3,
+			h5 {
+				font-size: medium;
+			}
+			padding: 0.75rem;
+			height: 30vh;
+
+			.copier {
+				margin-top: 1rem;
+			}
+		}
+	}
+}
