@@ -5,7 +5,7 @@ import google from "../icons/google.png";
 import firebase from "firebase";
 import { auth } from "../firebase/config";
 
-const Header = ({ user }) => {
+const Header = ({ user, queryValue, setQueryValue }) => {
 	const onClickHandler = () => {
 		auth.signOut();
 	};
@@ -18,13 +18,19 @@ const Header = ({ user }) => {
 				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero
 			</h1>
 			<div className="select-category">
-				<select className="form-select" aria-label="Default select example">
-					<option defaultValue="hello">Open this select menu</option>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
+				<select
+					className="form-select"
+					aria-label="Default select example"
+					value={queryValue}
+					onChange={(e) => setQueryValue(e.target.value)}
+				>
+					<option defaultValue="">Choose a category</option>
+					<option value="aesthetic">Aesthetic</option>
+					<option value="food">Food</option>
+					<option value="cars">Cars</option>
+					<option value="others">Others</option>
+					<option value="All">All</option>
 				</select>
-				<button>🔍</button>
 			</div>
 			{user && (
 				<button onClick={onClickHandler} className="signout">
