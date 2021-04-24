@@ -48,12 +48,14 @@
 @media screen and (max-width: 768px) {
 	.modals {
 		flex-direction: column;
-
 		img {
 			height: 50vh;
 		}
 
 		.display-section {
+			position: fixed;
+			bottom: 0;
+			width: 100%;
 			h3,
 			h5 {
 				font-size: medium;
