@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import uploadIcon from "../icons/upload.png";
-import Progress from "./Progress";
+import ProgressBar from "./ProgressBar";
 
 const UploadForm = ({ user }) => {
 	const [file, setFile] = useState(null);
 	const [error, setError] = useState(null);
-	const [category, setCategory] = useState("aesthetic");
-	const [upload, setUpload] = useState(false);
+	const [category, setCategory] = useState("");
 
 	const types = ["image/jpeg", "image/png"];
 
@@ -19,46 +18,44 @@ const UploadForm = ({ user }) => {
 		} else {
 			setFile(null);
 			setError("Please add an image file(jpeg/png)");
-			setUpload(false);
 		}
-	};
-
-	const onSubmitHandler = (e) => {
-		e.preventDefault();
-
-		if (file) setUpload(true);
-
-		console.log(file, category);
 	};
 
 	return (
 		<div className="UploadForm">
-			<form onSubmit={onSubmitHandler}>
-				<label>
-					<input onChange={onChangeHandler} type="file" />
-					<span>select a file</span>
-				</label>
-				<select
-					className="form-select"
-					aria-label="select a category"
-					value={category}
-					onChange={(e) => setCategory(e.target.value)}
-				>
-					<option defaultValue="aesthetic">Aesthetic</option>
-					<option value="food">Food</option>
-					<option value="cars">Cars</option>
-					<option value="others">Others</option>
-				</select>
-				<button>➕</button>
+			<form>
+				{!category && (
+					<select
+						className="form-select"
+						aria-label="select a category"
+						value={category}
+						onChange={(e) => setCategory(e.target.value)}
+					>
+						<option defaultValue="">Select a category</option>
+						<option value="aesthetic">Aesthetic</option>
+						<option value="food">Food</option>
+						<option value="cars">Cars</option>
+						<option value="others">Others</option>
+					</select>
+				)}
+
+				{category && (
+					<label>
+						<input onChange={onChangeHandler} type="file" />
+						<span>upload a file</span>
+					</label>
+				)}
+
 				<div className="output-display">
 					{file && <div>{file.name}</div>}
 					{error && <div className="errorMsg">{error}</div>}
-					{upload && (
-						<Progress
+					{file && (
+						<ProgressBar
 							file={file}
-							user={user}
 							setFile={setFile}
-							setUpload={setUpload}
+							category={category}
+							setCategory={setCategory}
+							user={user}
 						/>
 					)}
 				</div>
