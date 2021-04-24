@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { projStorage, db } from "../firebase/config";
+import { projStorage, db, timeStamp } from "../firebase/config";
 
-const useStorage = (file) => {
+const useStorage = (file, category, user) => {
 	const [progress, setProgress] = useState(0);
 	const [error, setError] = useState(null);
 	const [url, setUrl] = useState(null);
@@ -10,6 +10,7 @@ const useStorage = (file) => {
 	useEffect(() => {
 		//& references
 		const storageRef = projStorage.ref(file.name);
+		const collectionRef = db.collection("images");
 
 		//* uploading to firestorage
 		//& on() -> event listener since put() is ajax in nature
@@ -23,6 +24,12 @@ const useStorage = (file) => {
 			async () => {
 				const urlTemp = await storageRef.getDownloadURL();
 				setUrl(urlTemp);
+				collectionRef.add({
+					url: urlTemp,
+					category: category,
+					userName: user.displayName,
+					createdAt: timeStamp(),
+				});
 			}
 		);
 	}, [file]);

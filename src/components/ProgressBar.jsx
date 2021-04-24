@@ -3,7 +3,7 @@ import useStorage from "../hooks/useStorage";
 import { motion } from "framer-motion";
 
 const ProgressBar = ({ file, setFile, category, setCategory, user }) => {
-	const { progress, url } = useStorage(file, category);
+	const { progress, url } = useStorage(file, category, user);
 
 	//& setting the selected file as null , as soon as the upload is complete
 	useEffect(() => {
