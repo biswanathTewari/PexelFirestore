@@ -37,11 +37,7 @@ const Modal = ({ selectedImage, setSelectedImage }) => {
 				<h3>
 					Category : <span>{selectedImage.category}</span>
 				</h3>
-				<textarea
-					ref={txtRef}
-					readOnly
-					value={selectedImage.url}
-				></textarea>
+				<textarea ref={txtRef} value={selectedImage.url}></textarea>
 				<div className="copier">
 					<h5 onClick={copyToClipBoard} className="copy">
 						Copy url to clipboard
